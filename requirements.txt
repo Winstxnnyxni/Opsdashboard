@@ -3,3 +3,4 @@ pandas
 sqlalchemy
 openpyxl
 bcrypt
+streamlit-autorefresh
