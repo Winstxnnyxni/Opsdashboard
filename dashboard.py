@@ -1,3 +1,5 @@
+
+
 import streamlit as st
 
 # --- USERS ---
@@ -37,8 +39,8 @@ from datetime import datetime
 from streamlit_autorefresh import st_autorefresh
 
 # === CONFIG ===
-file_path = "processed_report.xlsx"
-csv_input_folder = "."
+file_path = r"C:\operations\processed_report.xlsx"
+csv_input_folder = r"C:\Operations"
 
 st.set_page_config(page_title="Operations Dashboard", layout="wide")
 st.title("📊 Exception Dashboard")
