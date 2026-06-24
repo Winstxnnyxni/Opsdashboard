@@ -35,12 +35,14 @@ import streamlit as st
 import pandas as pd
 import os
 import time
+from zoneinfo import ZoneInfo
 from datetime import datetime
 from streamlit_autorefresh import st_autorefresh
 
 # === CONFIG ===
 file_path = "processed_report.xlsx"
 csv_input_folder = "."
+DISPLAY_TIMEZONE = ZoneInfo("Africa/Johannesburg")
 
 st.set_page_config(page_title="Operations Dashboard", layout="wide")
 st.title("📊 Exception Dashboard")
@@ -212,7 +214,8 @@ csv_file_mtime = os.path.getmtime(csv_file_path) if csv_file_path else 0
 
 log_df, summary_df, live_df = load_data(file_mtime, csv_file_path, csv_file_mtime)
 
-st.caption(f"Last updated: {datetime.fromtimestamp(file_mtime)}")
+last_updated = datetime.fromtimestamp(file_mtime, tz=DISPLAY_TIMEZONE)
+st.caption(f"Last updated: {last_updated:%Y-%m-%d %H:%M:%S %Z}")
 
 if csv_file_path:
     st.caption(f"CSV checked for CREATED AND PAID: {os.path.basename(csv_file_path)}")
